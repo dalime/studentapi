@@ -6,9 +6,7 @@ $(() => {
   $('#currentDirectory').on('dblclick', '.template', deleteStudent);
 })
 
-
-function viewStudents(e) {
-  e.preventDefault();
+function displayStudents() {
   $('#currentDirectory').empty();
   $.get('/students')
     .done(data => {
@@ -28,6 +26,12 @@ function viewStudents(e) {
     })
 }
 
+
+function viewStudents(e) {
+  e.preventDefault();
+  displayStudents();
+}
+
 function addStudent(e) {
   e.preventDefault();
 
@@ -40,6 +44,7 @@ function addStudent(e) {
   $.post('/students', newObj)
   .done(givenID => {
     console.log(givenID);
+    displayStudents();
   })
   .fail(err => {
     console.error('error: ', err);
@@ -81,6 +86,7 @@ function updateStudent(e) {
   data: updateStudent,
   success: function(data) {
     console.log('Student updated successfully.');
+    displayStudents();
   },
   error: function(data) {
     console.error('error: ', data);
@@ -95,6 +101,7 @@ function deleteStudent() {
     type: 'DELETE',
     success: function(data) {
       console.log('Student deleted successfully.');
+      displayStudents();
     },
     error: function(data) {
       console.error('error', data);
