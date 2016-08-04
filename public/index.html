@@ -1,14 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <link rel="stylesheet" href="style.css">
+
+  <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   <script src="main.js" charset="utf-8"></script>
+
   <title>Student Directory</title>
 </head>
 <body>
+  <div class="container">
+    <div class="row">
+      <h1>Student Directory</h1>
+    </div>
+    <hr>
+    <div class="row">
+      <button id="btnViewDirectory" class="btn btn-primary">View Student Directory</button>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="container" id="formContainer">
+        <div class="form-group">
+          <form id="addStudentForm">
+              <div class="row">
+                <label>Name: </label>
+                <input type="text" id="iptName" />
+              </div>
+              <div class="row">
+                <label>Cohort: </label>
+                <input type="text" id="iptCohort" />
+              </div>
+              <div class="row">
+                <label>Gender: </label>
+                <input type="text" id="iptGender" />
+              </div>
+              <div class="row">
+                <button id="btnAddStudent" class="btn btn-primary">Add Student</button>
+              </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="container">
+    <div class="row">
+      <h2>Current Directory</h2>
+      <div class="col-md-12" id="currentDirectory">
+      </div>
+    </div>
+  </div>
+
+  <div id="studentEditModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <form id="editStudentForm">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Edit Student</h4>
+      </div>
+      <div class="modal-body">
+          <div class="form-group">
+            <div class="container">
+              <div class="row">
+                <label>Name: </label>
+                <input type="text" class="form-control" id="editName" style="width: 300px" required>
+              </div>
+              <div class="row">
+                <label>Cohort: </label>
+                <input type="text" class="form-control" id="editCohort" style="width: 300px" required>
+              </div>
+              <div class="row">
+                <label>Gender: </label>
+                <input type="text" class="form-control" id="editGender" style="width: 300px" required>
+              </div>
+            </div>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" id="btnClose">Close</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" id="btnUpdate">Save changes</button>
+      </div>
+    </div>
+  </div>
+  </form>
+  </div>
+
+  <div id="template" class="template">
+    <div class="row">
+      <label>Name: </label>
+      <h4 class="studentName"></h4>
+    </div>
+    <div class="row">
+      <label>Cohort: </label>
+      <h4 class="studentCohort"></h4>
+    </div>
+    <div class="row">
+      <label>Gender: </label>
+      <h4 class="studentGender"></h4>
+    </div>
+    <div class="row">
+      <button class="btn btn-primary edit">Edit Student Info</button>
+    </div>
+  </div>
   
 </body>
 </html>

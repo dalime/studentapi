@@ -29,7 +29,7 @@ exports.create = function(studentObject, cb) {
 
     students.push(studentObject);
     fs.writeFile(dataFilePath, JSON.stringify(students), function(err) {
-      cb(err);
+      cb(err, studentObject.id);
     });
   });
 }
