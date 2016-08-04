@@ -44,8 +44,6 @@ function addStudent(e) {
   .fail(err => {
     console.error('error: ', err);
   });
-
-  viewStudents();
 }
 /*
 function editStudent(e) {
@@ -88,8 +86,6 @@ function updateStudent(e) {
     console.error('error: ', data);
   }
 });
-
-  viewStudents();
 }
 
 function deleteStudent() {
@@ -104,7 +100,6 @@ function deleteStudent() {
       console.error('error', data);
     }
   })
-  viewStudents();
 }
 /*
 div class="row">
