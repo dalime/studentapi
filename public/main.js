@@ -3,7 +3,8 @@ $(() => {
   $('#btnAddStudent').click(addStudent);
   $('#currentDirectory').on('click', 'button.edit', openEditModal);
   $('#btnUpdate').click(updateStudent);
-  $('#currentDirectory').on('dblclick', '.template', deleteStudent);
+  $('#currentDirectory').on('click', 'button.delete', openDeleteModal);
+  $('#btnDelete').click(deleteStudent);
 })
 
 function displayStudents() {
@@ -50,15 +51,7 @@ function addStudent(e) {
     console.error('error: ', err);
   });
 }
-/*
-function editStudent(e) {
-  e.preventDefault();
 
-  let $index = $(this).parentsUntil( $('.template') ).data('id');
-  console.log($index);
-
-}
-*/
 let $id;
 
 function openEditModal() {
@@ -94,10 +87,20 @@ function updateStudent(e) {
 });
 }
 
+let $deleteID
+
+function openDeleteModal() {
+  $deleteID = $(this).data('student-id');
+  $.get(`/students/${$deleteID}`)
+    .done(data => {
+      $('#studentDeleteModal').modal();
+    })
+}
+
 function deleteStudent() {
-  let $deleteId = $(this).find('button.edit').data('student-id');
+  //let $deleteId = $(this).find('button.delete').data('student-id');
   $.ajax({
-    url: `/students/${$deleteId}`,
+    url: `/students/${$deleteID}`,
     type: 'DELETE',
     success: function(data) {
       console.log('Student deleted successfully.');
@@ -108,25 +111,3 @@ function deleteStudent() {
     }
   })
 }
-/*
-div class="row">
-  <div class="form-group">
-    <form id="addStudentForm">
-      <div class="row">
-        <label>Name: </label>
-        <input type="text" id="iptName" />
-      </div>
-      <div class="row">
-        <label>Cohort: </label>
-        <input type="text" id="iptCohort" />
-      </div>
-      <div class="row">
-        <label>Gender: </label>
-        <input type="text" id="iptGender" />
-      </div>
-      <div class="row">
-        <button id="btnAddStudent" class="btn btn-primary">Add Student</button>
-      </div>
-    </form>
-  </div>
-*/

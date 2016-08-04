@@ -4,10 +4,6 @@ const dataFilePath = path.join(__dirname, '../data/students.json'); //can set to
 const uuid = require('uuid');
 
 exports.getAll = function(cb) {
-  // 1. read the json file to get the data
-  // 2. parse the data, to get the array (of cats)
-  // 3. callback with the array
-  //   (if there's an error, callback with error)
   fs.readFile(dataFilePath, (err, buffer) => {
     if (err) return cb(err);
     let students;
