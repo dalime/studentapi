@@ -10,7 +10,6 @@ $(() => {
 function viewStudents(e) {
   e.preventDefault();
   $('#currentDirectory').empty();
-  getAllStudents();
   $.get('/students')
     .done(data => {
       const $people = data.map(person => {
